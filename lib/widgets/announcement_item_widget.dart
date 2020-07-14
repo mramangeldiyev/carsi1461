@@ -12,9 +12,19 @@ class AnnouncementItemWidget extends StatelessWidget {
         behavior: HitTestBehavior.translucent,
         onTap: () => {},
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              end: Alignment(0.0, -0.5),
+              begin: Alignment(0.0, 0.6),
+              colors: <Color>[
+                Colors.black,
+                Colors.black12.withOpacity(0.0),
+              ],
+            ),
+          ),
           //height: screenHeight * 0.3,
           //width: screenWidth * 0.95,
-          margin: EdgeInsets.all(0.4),
+          margin: EdgeInsets.all(0.6),
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             child: Card(
@@ -27,7 +37,7 @@ class AnnouncementItemWidget extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

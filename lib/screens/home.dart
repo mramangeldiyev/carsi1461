@@ -1,5 +1,5 @@
-import 'package:carsi1461/screens/main_page.dart';
-import 'package:carsi1461/screens/more.dart';
+import 'package:carsi1461/screens/main_page_screen.dart';
+import 'package:carsi1461/screens/more_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
