@@ -1,5 +1,7 @@
 import 'package:carsi1461/screens/main_page_screen.dart';
 import 'package:carsi1461/screens/more_screen.dart';
+import 'package:carsi1461/screens/rehberler_screen.dart';
+import 'package:carsi1461/widgets/currency_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,11 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
       TextStyle(fontSize: 25);
   static List<Widget> _widgetOptions = <Widget>[
     MainPage(),
-    Text(
-      'Tab 2',
-      style: optionStyle,
-    ),
-    MoreScreen()
+    RehberlerScreen(),
+    CurrencyWidget(),
+    MoreScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -41,10 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        //showSelectedLabels: true,
+        showUnselectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             title: Text('Anasayfa'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.record_voice_over),
+            title: Text('Rehberler'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.monetization_on),
