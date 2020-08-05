@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "113912686353",
+    "firebase_url": "https://carsi-app-1461.firebaseio.com",
+    "project_id": "carsi-app-1461",
+    "storage_bucket": "carsi-app-1461.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113912686353:android:c70cc3eab8c9d8b4d00eb0",
+        "android_client_info": {
+          "package_name": "com.example.carsi1461"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113912686353-q8s5bhmsu7rlf96dha1aij0auilgu4pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJVezqEQPpFM4DCGAUd4q9wwF1_gwyNbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113912686353-q8s5bhmsu7rlf96dha1aij0auilgu4pm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "113912686353-o1vko86peicgf2sh6ns3difm9gjnbrtc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carsi1461.carsi1461"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,7 +13,16 @@ class MoreScreen extends StatelessWidget {
   }
 }
 
-class MoreItems extends StatelessWidget {
+class MoreItems extends StatefulWidget {
+  getCurrentLocation() async {
+    final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+    print(position);
+}
+  @override
+  _MoreItemsState createState() => _MoreItemsState();
+}
+
+class _MoreItemsState extends State<MoreItems> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,8 +80,4 @@ class MoreItems extends StatelessWidget {
       ),
     );
   }
-}
-getCurrentLocation() async {
-    final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(position);
 }

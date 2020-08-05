@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
 List<Rehberler> parseRehberler(String responseBody) {
@@ -46,6 +47,7 @@ class RehberlerScreen extends StatelessWidget {
 
       //title: title,
       return Scaffold(
+        backgroundColor: Colors.grey[300],
         body: FutureBuilder<List>(
           future: fetchRehberler(http.Client()),
           builder: (context, snapshot) {
@@ -55,7 +57,15 @@ class RehberlerScreen extends StatelessWidget {
                 itemBuilder: (context, item) => rehberlerCarousel(snapshot.data[item])
               );
             } else {
-              return Text('Loading');
+              //return Text('Loading');
+              return Center(
+                child: SpinKitPouringHourglass(
+                  color: Colors.black,
+                ),
+                // child: CircularProgressIndicator(
+                //   backgroundColor: Colors.black,
+                // ),
+              );
             }
           },
           ),

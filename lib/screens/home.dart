@@ -1,8 +1,11 @@
+import 'package:carsi1461/models/message.dart';
 import 'package:carsi1461/screens/main_page_screen.dart';
 import 'package:carsi1461/screens/more_screen.dart';
 import 'package:carsi1461/screens/rehberler_screen.dart';
 import 'package:carsi1461/widgets/currency_widget.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -12,6 +15,76 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final List<Message> messages =[];
+
+
+
+_logic(Position incomeLoc)async{
+    var currentPosition = Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    
+
+
+
+  
+}
+
+
+   @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async{
+        print('onMessage: $message');
+        final notification = message['notification'];
+        final double latitude = message['latitude'];
+        final double longitude = message['longitude'];
+        setState(() {
+          messages.add(Message(
+            title: notification['title'],
+            body: notification['body'],
+            customMessage: message['yusuf'].toString(),
+
+          ));
+          _logic(Position(
+
+          ));
+        });
+
+
+      },
+      onLaunch: (Map<String, dynamic> message) async{
+        print('onLaunch: $message');
+        final notification = message['notification'];
+        setState(() {
+          messages.add(Message(
+            title: notification['title'],
+            body: notification['body'],
+            customMessage: message['yusuf'].toString(),
+            
+          ));
+        });
+      },
+
+      onResume: (Map<String, dynamic> message) async{
+        print('onResume: $message');
+        print(message['yusuf']);
+        print(message.toString());
+        final notification = message['notification'];
+        setState(() {
+          messages.add(Message(
+            title: notification['title'],
+            body: notification['body'],
+            customMessage: message['yusuf'].toString(),
+          ));
+        });
+      },      
+    );
+
+    _firebaseMessaging.requestNotificationPermissions(
+      const IosNotificationSettings(sound: true, badge: true, alert: true )
+    );
+  }
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 25);
