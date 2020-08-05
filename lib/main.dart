@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Montserrat',
       ),
-      home: HomeScreen(),
+      //home: HomeScreen(),
       //home: NewsDetailScreen(),
-      //home: NotificationPlugin(),
+      home: NotificationPlugin(),
       //home: OneSignalNotification(),
     );
   }
