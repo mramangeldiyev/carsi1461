@@ -7,7 +7,7 @@ class NewsDetailScreen extends StatelessWidget {
   NewsDetailScreen(this.news);
   @override
   Widget build(BuildContext context) {
-    print(news.news_description);
+    //print(news.news_description);
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -22,19 +22,34 @@ class NewsDetailScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Image.asset(
-            'assets/images/carsi1461logo.jpg',
-            height: screenHeight * 0.3,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 10, top: 20, right: 10),
-            child: Text(
-              'Niasasd asd asd a ds mk;klnsk  asd n;daskn; askjd ;adjsn kwnj; w;dnn;jn fwn;f jwnje;enf e',
+      body: SingleChildScrollView(
+              child: Column(
+          children: <Widget>[
+            Image.asset(
+              'assets/images/carsi1461logo.jpg',
+              height: screenHeight * 0.3,
             ),
-          ),
-        ],
+            Container(
+              padding: EdgeInsets.only(left: 15, right: 15),
+              child: Text(
+                news.news_title,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+              child: Text(
+                news.news_description,
+                style: TextStyle(
+                  fontSize: 20
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

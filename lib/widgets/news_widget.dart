@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+
+String _parseHtmlString(String htmlString) {
+  try {
+    var document = parse(htmlString);
+    String parsedString = parse(document.body.text).documentElement.text;
+
+    return parsedString;
+  } catch (e) {
+    return htmlString;
+  }
+}
 
 List<News> parseNews(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
@@ -26,7 +38,8 @@ class News {
     return News(
       news_title: json['news_title'] as String,
       news_image: json['news_image'] as String,
-      news_description: json['news_description'] as String,
+      news_description: _parseHtmlString(json['news_description'] as String),
+      //news_description: json['news_description'] as String,
     );
   }
 }
