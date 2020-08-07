@@ -1,9 +1,20 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+String _parseHtmlString(String htmlString) {
+  try {
+    var document = parse(htmlString);
+    String parsedString = parse(document.body.text).documentElement.text;
+    return parsedString;
+  } catch (e) {
+    return htmlString;
+  }
+}
 
 List<Firsatlar> parseFirsatlar(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
@@ -20,13 +31,15 @@ Future<List<Firsatlar>> fetchFirsatlar(http.Client client) async {
 class Firsatlar {
   final String name;
   final String news_image;
+  final String news_description;
 
-  Firsatlar({this.name, this.news_image});
+  Firsatlar({this.name, this.news_image, this.news_description});
 
   factory Firsatlar.fromJson(Map<String, dynamic> json) {
     return Firsatlar(
       name: json['name'] as String,
       news_image: json['news_image'] as String,
+      news_description: _parseHtmlString(json['news_description'] as String),
     );
   }
 }

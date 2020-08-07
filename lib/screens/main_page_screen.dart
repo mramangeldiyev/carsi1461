@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:carsi1461/screens/duyurular_detail_screen.dart';
+import 'package:carsi1461/screens/firsatlar_detail_screen.dart';
 import 'package:carsi1461/screens/firsatlar_list_screen.dart';
 import 'package:carsi1461/screens/news_detail_screen.dart';
 import 'package:carsi1461/widgets/duyurular_widget.dart';
@@ -144,7 +146,12 @@ class MainPage extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 for (var a in snapshot.data)
-                                  announcementArea(a),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => DuyurularDetailScreen(a)));
+                                  },
+                                  child: announcementArea(a),
+                                )
                               ],
                             ),
                           );
@@ -154,9 +161,6 @@ class MainPage extends StatelessWidget {
                             child: SpinKitPouringHourglass(
                               color: Colors.black,
                             ),
-                            // child: CircularProgressIndicator(
-                            //   backgroundColor: Colors.black,
-                            // ),
                           );
                         }
                       },
@@ -211,7 +215,14 @@ class MainPage extends StatelessWidget {
                             color: Colors.white,
                             child: Column(
                               children: <Widget>[
-                                for (var c in snapshot.data) firsatlarArea(c),
+                                for (var c in snapshot.data)
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FirsatlarDetailScreen(c)));
+                                  },
+                                  child: firsatlarArea(c),
+                                )
+                                
                               ],
                             ),
                           );

@@ -91,7 +91,7 @@ _logic(Position incomeLoc)async{
   static List<Widget> _widgetOptions = <Widget>[
     MainPage(),
     RehberlerScreen(),
-    CurrencyWidget(),
+    //CurrencyWidget(),
     MoreScreen(),
   ];
 
@@ -125,10 +125,10 @@ _logic(Position incomeLoc)async{
             icon: Icon(Icons.record_voice_over),
             title: Text('Rehberler'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.monetization_on),
-            title: Text('Piyasa'),
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.monetization_on),
+          //   title: Text('Piyasa'),
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.more_horiz),
             title: Text('Daha Fazla'),

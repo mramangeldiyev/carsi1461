@@ -1,8 +1,10 @@
+import 'package:carsi1461/screens/news_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/widgets.dart';
 
 String _parseHtmlString(String htmlString) {
   try {
@@ -71,7 +73,13 @@ class NewsWidget extends StatelessWidget {
                 if (snapshot.hasData) {
                   return Column(
                     children: <Widget>[
-                      for (var i in snapshot.data) newsList(i),
+                      for (var i in snapshot.data)
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => NewsDetailScreen(i)));
+                        },
+                        child: newsList(i),
+                      )
                     ],
                   );
                 } else {
@@ -133,69 +141,102 @@ Stack newsCarousell(News data) {
   );
 }
 
-GestureDetector newsList(News data) {
+Container newsList(News data) {
   String photo = 'http://carsi1461.com/' + data.news_image;
   print(data.news_image);
-  return GestureDetector(
-    child: Container(
-      margin: EdgeInsets.all(8.0),
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        child: InkWell(
-          onTap: () {
-            print('asd');
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch, // add this
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border(
-                    bottom: BorderSide(color: Colors.grey),
-                  )),
-                  child: Image.network(
-                      data.news_image == ""
-                          ? 'http://carsi1461.com/uploads/logo.jpg'
-                          : photo,
-                      // width: 300,
-                      height: 150,
-                      fit: BoxFit.fitWidth),
+  return Container(
+    margin: EdgeInsets.all(8.0),
+    child: Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8.0))),
+      child: InkWell(
+        // onTap: () {
+        //   print('asd');
+        // },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch, // add this
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                  bottom: BorderSide(color: Colors.grey),
+                )),
+                child: Image.network(
+                    data.news_image == ""
+                        ? 'http://carsi1461.com/uploads/logo.jpg'
+                        : photo,
+                    // width: 300,
+                    height: 150,
+                    fit: BoxFit.fitWidth),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                data.news_title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              ListTile(
-                title: Text(
-                  data.news_title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              // ListTile(
-              //   title: Text(
-              //     'Telefon: ' + data.telefon
-              //   ),
-              // ),
-              // ListTile(
-              //   title: Text(
-              //     'Adres: ' + data.adres,
-              //     maxLines: 3,
-              //   ),
-              // ),
-              // ListTile(
-              //   title: Text(
-              //     'Website: ' + data.website,
-              //   ),
-              // )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     ),
   );
 }
+
+// GestureDetector newsList(News data) {
+//   String photo = 'http://carsi1461.com/' + data.news_image;
+//   print(data.news_image);
+//   return GestureDetector(
+//     child: Container(
+//       margin: EdgeInsets.all(8.0),
+//       child: Card(
+//         shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.all(Radius.circular(8.0))),
+//         child: InkWell(
+//           onTap: () {
+//             print('asd');
+//           },
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.stretch, // add this
+//             children: <Widget>[
+//               ClipRRect(
+//                 borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(8.0),
+//                   topRight: Radius.circular(8.0),
+//                 ),
+//                 child: Container(
+//                   decoration: BoxDecoration(
+//                       border: Border(
+//                     bottom: BorderSide(color: Colors.grey),
+//                   )),
+//                   child: Image.network(
+//                       data.news_image == ""
+//                           ? 'http://carsi1461.com/uploads/logo.jpg'
+//                           : photo,
+//                       // width: 300,
+//                       height: 150,
+//                       fit: BoxFit.fitWidth),
+//                 ),
+//               ),
+//               ListTile(
+//                 title: Text(
+//                   data.news_title,
+//                   style: TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//   );
+// }
