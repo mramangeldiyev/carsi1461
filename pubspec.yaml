@@ -28,15 +28,19 @@ dependencies:
   carousel_pro: ^1.0.0
   http: ^0.12.1
   html: ^0.14.0+3
-  geolocator: ^5.3.2+2
-  firebase_messaging: ^6.0.16
   path_provider: ^1.6.11
   flutter_html: ^1.0.0
   flutter_spinkit: ^4.1.2+1
   carousel_slider: ^2.2.1
   flutter_local_notifications: ^1.4.4+2
-  geoflutterfire: ^2.1.0
-  google_maps_flutter: ^0.5.29
+  url_launcher: ^5.5.0
+  device_preview: ^0.4.8
+  youtube_player_flutter: ^7.0.0+7
+  expandable: ^4.1.4
+  firebase_messaging: ^6.0.16
+  get_it: ^4.0.4
+  firebase_analytics: ^6.0.0
+  xml: ^4.2.0
 
 dev_dependencies:
   flutter_test:

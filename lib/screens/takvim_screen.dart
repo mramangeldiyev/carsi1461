@@ -1,73 +1,33 @@
-import 'package:carsi1461/widgets/rehberler_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:carsi1461/widgets/takvim_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
-List<Rehberler> parseRehberler(String responseBody) {
-  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
-  return parsed.map<Rehberler>((json) => Rehberler.fromJson(json)).toList();
-}
-
-Future<List<Rehberler>> fetchRehberler(http.Client client) async {
-  final response = await client.get('http://carsi1461.com/test_app/rehber.php');
-
-  return compute(parseRehberler, response.body);
-}
-
-class Rehberler {
-  final String news_image;
-  final String name;
-  final String telefon;
-  final String adres;
-  final String website;
-
-  Rehberler({ this.name, this.news_image, this.telefon, this.adres, this.website});
-
-  factory Rehberler.fromJson(Map<String, dynamic> json) {
-    return Rehberler(
-      news_image: json['news_image'] as String,
-      name: json['name'] as String,
-      telefon: json['telefon'] as String,
-      adres: json['adres'] as String,
-      website: json['website'] as String,
-    );
-  }
-}
-
-class RehberlerScreen extends StatelessWidget {
+class TakvimScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    final title = 'Fırsatlar';
+  Widget build(BuildContext context) {;
 
       //title: title,
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(
-            'Rehberler',
-            style: TextStyle(
-              color: Colors.black
-            ),
-          ),
-          leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Fuar Takvimi',
+          style: TextStyle(color: Colors.black),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        ),
+      ),
         backgroundColor: Colors.grey[300],
         body: FutureBuilder<List>(
-          future: fetchRehberler(http.Client()),
+          future: fetchTakvim(http.Client()),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemCount: snapshot.data.length,
-                itemBuilder: (context, item) => rehberlerCarousel(snapshot.data[item])
+                itemBuilder: (context, item) => takvimCarousel(snapshot.data[item])
               );
             } else {
               //return Text('Loading');
@@ -86,7 +46,7 @@ class RehberlerScreen extends StatelessWidget {
   }
 
 
-GestureDetector rehberlerCarousel(Rehberler data) {
+GestureDetector takvimCarousel(Takvim data) {
   String photo = 'http://carsi1461.com/' + data.news_image;
   print(data.news_image);
   return GestureDetector(
@@ -112,7 +72,7 @@ GestureDetector rehberlerCarousel(Rehberler data) {
                   child: Image.network(data.news_image == "" ? 'http://carsi1461.com/uploads/logo.jpg' : photo,
                       // width: 300,
                       height: 150,
-                      fit: BoxFit.fitWidth),
+                      fit: BoxFit.contain),
                 ),
               ),
               ListTile(
@@ -125,20 +85,15 @@ GestureDetector rehberlerCarousel(Rehberler data) {
               ),
               ListTile(
                 title: Text(
-                  'Telefon: ' + data.telefon
+                  'Organizatör: ' + data.organizator
                 ),
               ),
               ListTile(
                 title: Text(
-                  'Adres: ' + data.adres,
+                  'Adres: ' + data.yer,
                   maxLines: 3,
                 ),
               ),
-              ListTile(
-                title: Text(
-                  'Website: ' + data.website,
-                ),
-              )
             ],
           ),
         ),

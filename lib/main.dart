@@ -4,11 +4,27 @@ import 'package:carsi1461/screens/news_detail_screen.dart';
 import 'package:carsi1461/widgets/notification.dart';
 import 'package:carsi1461/widgets/notification_plugin.dart';
 import 'package:carsi1461/widgets/one_signal_notification.dart';
+import 'package:carsi1461/widgets/push_notification_service.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    //DevicePreview(builder: )
+    DevicePreview(
+      enabled: false,
+      builder: (context) => MyApp(),
+    ),
+  );
 }
+
+// FirebaseMessaging firebaseMessaging = FirebaseMessaging();
+
+// Future<void> init() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await firebaseMessaging.requestNotificationPermissions();
+// }
 
 class MyApp extends StatelessWidget {
   @override
@@ -22,6 +38,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Montserrat',
       ),
       home: HomeScreen(),
+      // home: PushNotificationService(),
     );
   }
 }

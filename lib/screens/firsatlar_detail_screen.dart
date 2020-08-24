@@ -30,13 +30,25 @@ class FirsatlarDetailScreen extends StatelessWidget {
           children: <Widget>[
             Container(
               height: screenHeight * 0.3,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage('http://carsi1461.com/' + firsatlar.news_image),
-                  fit: BoxFit.cover
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
                 ),
+                child: Image.network(
+                    'http://carsi1461.com/' + firsatlar.news_image),
               ),
             ),
+            // Container(
+            //   height: screenHeight * 0.3,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(8),
+            //     image: DecorationImage(
+            //       image: NetworkImage('http://carsi1461.com/' + firsatlar.news_image),
+            //       fit: BoxFit.cover
+            //     ),
+            //   ),
+            // ),
             Container(
               padding: EdgeInsets.only(left: 15, right: 15),
               child: Text(

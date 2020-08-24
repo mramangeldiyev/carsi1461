@@ -52,7 +52,7 @@ class AnnouncementWidget extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.white,
           title: Text(
-            'Fırsatlar',
+            'Duyurular',
             style: TextStyle(
               color: Colors.black
             ),

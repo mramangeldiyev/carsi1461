@@ -3,44 +3,45 @@ import 'package:carsi1461/facebook_custom_icon_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _facebookLaunchURL() async {
-      // const url = 'https://www.facebook.com/Carsi1461com-397214647798908/';
-      // if (await canLaunch(url)) {
-      //   await launch(url);
-      // } else {
-      //   throw 'Could not launch $url';
-      // }
+      const url = 'https://www.facebook.com/Carsi1461com-397214647798908/';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
 
     _youtubeLaunchURL() async {
-      // const url = 'http://carsi1461.com/#';
-      // if (await canLaunch(url)) {
-      //   await launch(url);
-      // } else {
-      //   throw 'Could not launch $url';
-      // }
+      const url = 'https://www.youtube.com/channel/UCK4U3KYvkloRPUkSPCvisIQ';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
 
     _twitterLaunchURL() async {
-      // const url = 'http://carsi1461.com/#';
-      // if (await canLaunch(url)) {
-      //   await launch(url);
-      // } else {
-      //   throw 'Could not launch $url';
-      // }
+      const url = 'https://twitter.com/carsi1461';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
 
     _instagramLaunchURL() async {
-      // const url = 'https://www.instagram.com/carsi1461/';
-      // if (await canLaunch(url)) {
-      //   await launch(url);
-      // } else {
-      //   throw 'Could not launch $url';
-      // }
+      const url = 'https://www.instagram.com/carsi1461/';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
 
     return Material(

@@ -27,7 +27,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
           messages.add(Message(
             title: notification['title'],
             body: notification['body'],
-            customMessage: message['yusuf'].toString(),
+            //customMessage: message['yusuf'].toString(),
 
           ));
         });
@@ -39,7 +39,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
           messages.add(Message(
             title: notification['title'],
             body: notification['body'],
-            customMessage: message['yusuf'].toString(),
+            //customMessage: message['yusuf'].toString(),
             
           ));
         });
@@ -54,7 +54,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
           messages.add(Message(
             title: notification['title'],
             body: notification['body'],
-            customMessage: message['yusuf'].toString(),
+            //customMessage: message['yusuf'].toString(),
           ));
         });
       },      
@@ -73,7 +73,7 @@ class _MessagingWidgetState extends State<MessagingWidget> {
   }
 
   Widget buildMessage(Message message) {
-    print(message.customMessage);
+    //print(message.customMessage);
 
     return ListTile(
       //title: Text('absd'),

@@ -32,7 +32,7 @@ class DuyurularDetailScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage('http://carsi1461.com/' + duyuru.news_image),
-                  fit: BoxFit.cover
+                  fit: BoxFit.contain
                 ),
               ),
             ),

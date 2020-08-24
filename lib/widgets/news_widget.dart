@@ -95,18 +95,37 @@ class NewsWidget extends StatelessWidget {
 }
 
 Stack newsCarousell(News data) {
+  //BuildContext context;
   return Stack(
     alignment: Alignment.center,
     children: <Widget>[
-      ClipRRect(
-        //borderRadius: BorderRadius.all(Radius.circular(8)),
-        child: Image.network(
-            'http://carsi1461.com/' + data.news_image,
-            fit: BoxFit.cover,
-          ),
-      ),
+      
+      // Image.network(
+      //   'http://carsi1461.com/' + data.news_image,
+      //   fit: BoxFit.cover,
+      // ),
       Container(
-        margin: EdgeInsets.only(left: 11, right: 11),
+        //width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.symmetric(horizontal: 5.0),
+        //margin: EdgeInsets.all(0),
+        // height: screenHeight * 0.25,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Image.network(
+          'http://carsi1461.com/' + data.news_image,
+          //fit: BoxFit.cover,
+        ),
+      ),
+      // ClipRRect(
+      //   borderRadius: BorderRadius.all(Radius.circular(8)),
+      //   child: Image.network(
+      //       'http://carsi1461.com/' + data.news_image,
+      //       fit: BoxFit.contain,
+      //     ),
+      // ),
+      Container(
+        margin: EdgeInsets.only(left: 5, right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           gradient: LinearGradient(
